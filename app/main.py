@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 import shutil
 import uuid
 import os
-from app.tasks import ocr_task
+from .tasks import ocr_task
 from celery.result import AsyncResult # type: ignore
 
 

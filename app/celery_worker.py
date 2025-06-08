@@ -1,3 +1,9 @@
-from .tasks import celery_app
+from celery import Celery # type: ignore
 
-app = celery_app
+
+app = Celery(
+    "worker",
+    broker="amqp://guest:guest@rabbitmq:5672//",
+    backend="redis://redis:6379/0"
+)
+app.autodiscover_tasks(["app.tasks.*"])
